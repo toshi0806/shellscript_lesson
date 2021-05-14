@@ -2,26 +2,26 @@
 
 # 某所から拾ってきた shell script の断片
 while(true);do
-    read -p "original path : " filePass
-    if [ "$filePass" != "" ]; then
+    read -p "original path : " srcPath
+    if [ "$srcPath" != "" ]; then
         break;
     fi
 done
 
-read -p "converted path : " convertname
-if [ "$convertname" != "" ]; then
-    convertname=`echo ${convertname}.mcfunction`
-    filedir=`dirname ${filePass}`
-    filedir=`echo ${filedir}\'`
-    cd "${filedir}"
-    touch ${convertname};
+read -p "converted path : " dstPath
+if [ "$dstPath" != "" ]; then
+    dstPath=`echo ${dstPath}.mcfunction`
+    srcDir=`dirname ${srcPath}`
+    srcDir=`echo ${srcDir}\'`
+    cd "${srcDir}"
+    touch ${dstPath};
 else
-    convertname='converted.mcfunction'
+    dstPath='converted.mcfunction'
 fi
 
 echo "###########"
 
 # 動作チェック用に追加
-echo "From: $filePass"
-echo "To  : $convertname"
-echo "dir : $filedir"
+echo "From: $srcPath"
+echo "To  : $dstPath"
+echo "dir : $srcDir"
