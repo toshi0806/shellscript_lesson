@@ -1,6 +1,10 @@
 #! /bin/bash
 
 # 某所から拾ってきた shell script の断片
+
+suffix='.mcfunction'
+defaultDstPath="converted${suffix}"
+
 while true;do
     read -p "original path : " srcPath
     if [ "$srcPath" != "" ]; then
@@ -10,12 +14,12 @@ done
 
 read -p "converted path : " dstPath
 if [ "$dstPath" != "" ]; then
-    dstPath="${dstPath}.mcfunction"
+    dstPath="${dstPath}${suffix}"
     srcDir="${srcPath%/*}\'"
     cd "${srcDir}"
-    touch ${dstPath}
+    touch "${dstPath}"
 else
-    dstPath='converted.mcfunction'
+    dstPath="${defaultDstPath}"
 fi
 
 echo "###########"
