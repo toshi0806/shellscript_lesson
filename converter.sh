@@ -17,3 +17,8 @@ read -p "converted path : " convertname
     convertname='converted.mcfunction' ;fi
 
     echo "###########"
+
+# 動作チェック用に追加
+echo "From: $filePass"
+echo "To  : $convertname"
+echo "dir : $filedir"
