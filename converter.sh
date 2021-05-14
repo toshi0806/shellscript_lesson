@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # 某所から拾ってきた shell script の断片
-while(true);do
+while true;do
     read -p "original path : " srcPath
     if [ "$srcPath" != "" ]; then
         break;
