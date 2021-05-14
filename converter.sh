@@ -10,11 +10,10 @@ done
 
 read -p "converted path : " dstPath
 if [ "$dstPath" != "" ]; then
-    dstPath=`echo ${dstPath}.mcfunction`
-    srcDir=`dirname ${srcPath}`
-    srcDir=`echo ${srcDir}\'`
+    dstPath="${dstPath}.mcfunction"
+    srcDir="${srcPath%/*}\'"
     cd "${srcDir}"
-    touch ${dstPath};
+    touch ${dstPath}
 else
     dstPath='converted.mcfunction'
 fi
