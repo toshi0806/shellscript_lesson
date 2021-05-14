@@ -28,6 +28,8 @@ fi
 
 if [ "$dstPath" != "" ]; then
     dstPath="${dstPath}${suffix}"
+# suffix が重複していた場合削除
+    dstPath="${dstPath//${suffix}${suffix}/${suffix}}"
     srcDir="${srcPath%/*}\'"
     cd "${srcDir}"
     touch "${dstPath}"
