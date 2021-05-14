@@ -5,14 +5,27 @@
 suffix='.mcfunction'
 defaultDstPath="converted${suffix}"
 
-while true;do
-    read -p "original path : " srcPath
-    if [ "$srcPath" != "" ]; then
-        break;
-    fi
-done
+if [ $# == 2 ]; then
+# 引数が2つなら、変換前ファイル名は第1引数、変換後ファイル名は第2引数
+    srcPath=$1
+    dstPath=$2
+elif [ $# == 1 ]; then
+# 引数が1つなら、変換前ファイル名は第1引数、変換後ファイル名はデフォルト
+# 変換後ファイル名の実際の代入は、 echo "###" の直前ぐらい
+    srcPath=$1
+    dstPath=''
+else
+# 引数が0なら、対話的にファイル名を取得
+    while true;do
+        read -p "original path : " srcPath
+        if [ "$srcPath" != "" ]; then
+            break;
+        fi
+    done
+    
+    read -p "converted path : " dstPath
+fi
 
-read -p "converted path : " dstPath
 if [ "$dstPath" != "" ]; then
     dstPath="${dstPath}${suffix}"
     srcDir="${srcPath%/*}\'"
